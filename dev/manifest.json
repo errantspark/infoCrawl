@@ -14,8 +14,10 @@
     "default_popup": "popup.html"
   },
   "permissions": [
+    "history",
     "storage",  
     "https://secure.flickr.com/",
+    "http://mbostock.github.com/",
     "webNavigation",
     "tabs"
   ]

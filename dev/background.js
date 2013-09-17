@@ -44,6 +44,7 @@ chrome.webNavigation.onBeforeNavigate.addListener(function(ev){
 //everything prior to this point is bullshit but i'm not deleting it yet because
 //my memory is shitty and i might need some of it
 //AND YES MIKE I KNOW I CAN JUST USE GIT TO GET IT BACK BUT THAT'S EFFORT
+var samuraijack = 60000000
 
 var locst;
 chrome.storage.local.get(function(e){locst = e});
@@ -60,7 +61,7 @@ var addVisits = function(inp){
     chrome.history.getVisits({url: e.url}, function(x){
       visits = visits.concat(x)
       if (i+1 === inp.length){
-        vistf = visits.filter(function(e){return e.visitTime > new Date-600000})
+        vistf = visits.filter(function(e){return e.visitTime > new Date-samuraijack})
         visf = vistf.filter(function(e){return e.transition === 'link'})
         visid = visf.map(function(e){return e.visitId})
         vids = visf.map(function(e){
@@ -95,7 +96,7 @@ var addVisits = function(inp){
   })
 }
 chrome.history.search(
-  {text: '- Wikipedia, the free', startTime: new Date-600000}, 
+  {text: '- Wikipedia, the free', startTime: new Date-samuraijack}, 
   function(e){
     hist = e;
     addVisits(e)
